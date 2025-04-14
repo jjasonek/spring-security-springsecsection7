@@ -4,3 +4,16 @@
 ## Docker container for MySQL
 docker run -p 3306:3306 --name springsecurity -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=eazybank -d mysql
 
+
+## Testing HTTPS with pord environment variable set
+21:24:28.002 INFO  [restartedMain] c.e.EasyBankBackendApplication - **The following 1 profile is active: "prod"**
+
+**My browser:** 
+Redirects me to https://localhost:8443/myAccount?continue with an message about unavailability.
+
+**Postman:**
+GET http://localhost:8080/myAccount
+Error: connect ECONNREFUSED ::1:8443
+
+### solution
+We start the application with non-prod profile.
