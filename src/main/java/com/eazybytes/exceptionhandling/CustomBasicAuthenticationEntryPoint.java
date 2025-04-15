@@ -26,7 +26,6 @@ public class CustomBasicAuthenticationEntryPoint implements AuthenticationEntryP
                 authException.getMessage() : "Unauthorized";
         String path = request.getRequestURI();
 
-        response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setHeader("eazybank-error-reason", "Authentication failed");
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
         response.setContentType("application/json:charset=UTF-8");
