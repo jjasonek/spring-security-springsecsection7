@@ -37,3 +37,18 @@ eazybank-error-reason: Authentication failed
 Postman:
 GET http://localhost:8080/myAccount
 {"timestamp":"2025-04-15T16:15:18.705367700","status":401,"error":"Unauthorized","message":"User not found for the username: smith@example.com1","path":"/myAccount"}
+
+
+## Testing CustomAccessDeniedHandler
+
+Postman:
+GET http://localhost:8080/myAccount1    //wrong address
+{"timestamp":"2025-04-15T19:34:29.900786600","status":403,"error":"Forbidden","message":"Access Denied","path":"/myAccount1"}
+
+and one of response headers:
+eazybank-denied-reason: Authorization failed
+
+
+The lecturer got the same JSON in hos browser. 
+I'm getting some error page translated to czech. This might be some browser setting.
+I tried to set an breakpoint in the CustomAccessDeniedHandler and it sent the JSON right.
