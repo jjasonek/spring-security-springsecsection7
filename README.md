@@ -19,7 +19,7 @@ Error: connect ECONNREFUSED ::1:8443
 We start the application with non-prod profile.
 
 
-## Testing CustomBasicAuthenticationEntryPoint customised header
+## Testing CustomBasicAuthenticationEntryPoint customised error header
 
 Postman:
 GET http://localhost:8080/myAccount
@@ -30,3 +30,10 @@ And we can see header:
 Response Headers
 eazybank-error-reason: Authentication failed
 ...
+
+
+## Testing CustomBasicAuthenticationEntryPoint customised error message
+
+Postman:
+GET http://localhost:8080/myAccount
+{"timestamp":"2025-04-15T16:15:18.705367700","status":401,"error":"Unauthorized","message":"User not found for the username: smith@example.com1","path":"/myAccount"}
