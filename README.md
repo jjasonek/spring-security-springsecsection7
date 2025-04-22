@@ -57,3 +57,7 @@ I tried to set an breakpoint in the CustomAccessDeniedHandler and it sent the JS
 ## Session Timeout
 
 After the session expires, the browser redirects to the login page.
+
+### invalid session page
+Now we get 404 in the browser after the timeout, because we did not build the /invalidSession page.
+But the value in the address bar is: http://localhost:8080/invalidSession
