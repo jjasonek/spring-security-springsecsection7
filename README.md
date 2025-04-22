@@ -52,3 +52,8 @@ eazybank-denied-reason: Authorization failed
 The lecturer got the same JSON in hos browser. 
 I'm getting some error page translated to czech. This might be some browser setting.
 I tried to set an breakpoint in the CustomAccessDeniedHandler and it sent the JSON right.
+
+
+## Session Timeout
+
+After the session expires, the browser redirects to the login page.
