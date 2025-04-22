@@ -34,6 +34,10 @@ public class ProjectSecurityConfig {
         http.formLogin(withDefaults());
         http.httpBasic(hbc -> hbc.authenticationEntryPoint(new CustomBasicAuthenticationEntryPoint()));
         http.exceptionHandling(ehc -> ehc.accessDeniedHandler(new CustomAccessDeniedHandler()));    // Globally
+
+        // For WEB UI application would make sense to add also accessDeniedPage method:
+//        http.exceptionHandling(ehc -> ehc.accessDeniedHandler(new CustomAccessDeniedHandler()).accessDeniedPage("/denied"));
+
         return http.build();
     }
 
