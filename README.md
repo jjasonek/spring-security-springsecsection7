@@ -61,3 +61,88 @@ After the session expires, the browser redirects to the login page.
 ### invalid session page
 Now we get 404 in the browser after the timeout, because we did not build the /invalidSession page.
 But the value in the address bar is: http://localhost:8080/invalidSession
+
+
+## Active session testing
+### Postman login
+GET http://localhost:8080/myAccount
+200
+...
+Request Headers
+Authorization: Basic c21pdGhAZXhhbXBsZS5jb206RWF6eUJ5dGVzQDEyMzQ1
+...
+Cookie: JSESSIONID=755662EE1F2F2A4A70544ECF9F0B9850
+
+Response Headers
+Set-Cookie: JSESSIONID=92BCD62235ECCD4E0BA3AD33FEA19ECB; Path=/; HttpOnly
+...
+Response Body
+Here are the account details from the DB
+
+### Postman No Auth
+01:13:51.538
+GET http://localhost:8080/myAccount
+200
+...
+Request Headers
+...
+Cookie: JSESSIONID=92BCD62235ECCD4E0BA3AD33FEA19ECB
+
+Response Headers
+...
+Response Body
+Here are the account details from the DB
+
+
+## Session expiration testing
+### Postman login
+GET http://localhost:8080/myAccount
+200
+17 ms
+Network
+addresses: {…}
+Request Headers
+Authorization: Basic c21pdGhAZXhhbXBsZS5jb206RWF6eUJ5dGVzQDEyMzQ1
+User-Agent: PostmanRuntime/7.43.3
+Accept: */*
+Cache-Control: no-cache
+Postman-Token: e5e0868b-05ab-4086-948b-abd3f1c99d91
+Host: localhost:8080
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+Response Headers
+Set-Cookie: JSESSIONID=579712748D7E04D938A332D075EDF2C5; Path=/; HttpOnly
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Content-Type: text/plain;charset=UTF-8
+Content-Length: 40
+Date: Wed, 23 Apr 2025 10:08:44 GMT
+Keep-Alive: timeout=60
+Connection: keep-alive
+Response Body
+Here are the account details from the DB
+
+### Browser refresh attempt (user was logged in before)
+Request headers:
+GET /myAccount HTTP/1.1
+...
+Cookie: JSESSIONID=053E977CE9459B78C5086551E2ECD1A2
+...
+
+Response headers:
+HTTP/1.1 200
+...
+Expires: 0
+X-Frame-Options: DENY
+...
+
+Response:
+**This session has been expired (possibly due to multiple concurrent logins being attempted as the same user).**
+
+This was a bit strange, because the lecturer achieved this in the Postman while I did in the browser.
+I could not achieve the session expired message in the Postman. 
+
