@@ -146,3 +146,24 @@ Response:
 This was a bit strange, because the lecturer achieved this in the Postman while I did in the browser.
 I could not achieve the session expired message in the Postman. 
 
+
+## Prevent Login when the maximum number of sessions has been reached
+## Postman login
+GET http://localhost:8080/myAccount
+...
+Request Headers
+Authorization: Basic c21pdGhAZXhhbXBsZS5jb206RWF6eUJ5dGVzQDEyMzQ1
+...
+
+Response Headers
+Set-Cookie: JSESSIONID=CA2B730DC879EA3FF946D2F305902E89; Path=/; HttpOnly
+...
+
+Response Body
+Here are the account details from the DB
+
+Browser response:
+
+redirect to http://localhost:8080/login?error
+with error test: "Maximum sessions of 1 for this principal exceeded"
+
