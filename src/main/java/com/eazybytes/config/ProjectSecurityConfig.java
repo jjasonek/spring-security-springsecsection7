@@ -26,8 +26,10 @@ public class ProjectSecurityConfig {
      */
     @Bean
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
+        // We can configure through one http like here or we can also use multiple http like it is done below.
+        // The result should be the same.
         http.sessionManagement(smc -> smc.invalidSessionUrl("/invalidSession")
-                                         .maximumSessions(1)
+                                         .maximumSessions(3)
                                          .maxSessionsPreventsLogin(true))
             .requiresChannel(rcc -> rcc.anyRequest().requiresInsecure())    // only HTTP allowed
             .csrf(csrfConfig -> csrfConfig.disable())
