@@ -167,3 +167,10 @@ Browser response:
 redirect to http://localhost:8080/login?error
 with error test: "Maximum sessions of 1 for this principal exceeded"
 
+
+## Authentication events console logs
+
+22:01:52.437 ERROR [http-nio-8080-exec-3] c.e.e.AuthenticationEvents - Login failed for the user: smith@example.com1 due to: User not found for the username: smith@example.com1
+...
+22:03:32.093 INFO  [http-nio-8080-exec-5] c.e.e.AuthenticationEvents - Login successful for the user: smith@example.com
+
